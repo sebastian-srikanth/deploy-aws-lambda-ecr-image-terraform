@@ -1,13 +1,18 @@
-variable "aws_region" {
+variable "region" {
     description = "AWS Region where resources needs to be created"
     type = string
     default = "ap-south-1"
 }
 
-variable "backend_bucket_name" {
+variable "bucket" {
+    description = "AWS Region where resources needs to be created"
     type = string
+    default = "ap-south-1"
 }
 
-variable "backend_bucket_key_name" {
+variable "key" {
+    description = "AWS Region where resources needs to be created"
     type = string
+    default = "ap-south-1"
 }
+

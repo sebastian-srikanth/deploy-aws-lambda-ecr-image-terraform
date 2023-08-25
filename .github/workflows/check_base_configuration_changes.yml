@@ -1,4 +1,4 @@
-name: Deploy Base Configuration
+name: Check Base Configuration
 on:
   pull_request:
     branches:
@@ -26,5 +26,7 @@ jobs:
       - name: Terraform Initialize
         run: |
           cd terraform
-          terraform init
-          terraform plan
+          env=dev
+          terraform get -update=true
+          terraform init -backend-config=${env}.conf
+          terraform plan -var-file=${env}.tfvars
