@@ -39,5 +39,6 @@ jobs:
         ECR_REPOSITORY: deploy-aws-lambda-ecr-image
         IMAGE_TAG: ACTUAL
       run: |
+        cd lambda-code
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
