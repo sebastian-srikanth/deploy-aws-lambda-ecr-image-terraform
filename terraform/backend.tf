@@ -1,4 +1,4 @@
 terraform {
     required_version = ">= 1.5.6"
-    backend "consul" {}
+    backend "s3" {}
 }
