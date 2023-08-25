@@ -14,6 +14,7 @@ data "aws_iam_policy_document" "ecr_repo_policy_doc" {
 
     actions = [
       "ecr:GetDownloadUrlForLayer",
+      "ecr:GetAuthorizationToken",
       "ecr:BatchGetImage",
       "ecr:BatchCheckLayerAvailability",
       "ecr:PutImage",
