@@ -43,6 +43,6 @@ jobs:
         IMAGE_TAG: ACTUAL
       run: |
         cd lambda-code
-        aws ecr batch-delete-image --repository-name $ECR_REGISTRY --image-ids imageTag=$IMAGE_TAG
+        aws ecr batch-delete-image --repository-name $ECR_REPOSITORY --image-ids imageTag=$IMAGE_TAG
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
