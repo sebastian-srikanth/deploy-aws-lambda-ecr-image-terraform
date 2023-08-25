@@ -9,7 +9,7 @@ data "aws_iam_policy_document" "ecr_repo_policy_doc" {
 
     principals {
       type        = "AWS"
-      identifiers = [var.aws_account]
+      identifiers = [data.aws_caller_identity.current.account_id]
     }
 
     actions = [
