@@ -21,10 +21,10 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
 
-    # - name: Swap ACTUAL image with PREVIOUS
-    #   run: |
-    #     MANIFEST=$(aws ecr batch-get-image --repository-name amazonlinux --image-ids imageTag=ACTUAL --output text --query images[].imageManifest
-    #     aws ecr put-image --repository-name amazonlinux --image-tag PREVIOUS --image-manifest "$MANIFEST"
+    - name: Swap ACTUAL image with PREVIOUS
+      run: |
+        MANIFEST=$(aws ecr batch-get-image --repository-name amazonlinux --image-ids imageTag=ACTUAL --output text --query images[].imageManifest
+        aws ecr put-image --repository-name amazonlinux --image-tag PREVIOUS --image-manifest "$MANIFEST"
 
     - name: Login to Amazon ECR
       id: login-ecr
@@ -40,5 +40,6 @@ jobs:
         IMAGE_TAG: ACTUAL
       run: |
         cd lambda-code
+        aws ecr batch-delete-image --repository-name $ECR_REGISTRY --image-ids imageTag=$IMAGE_TAG
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
