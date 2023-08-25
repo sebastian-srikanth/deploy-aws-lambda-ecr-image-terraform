@@ -27,7 +27,7 @@ jobs:
       - name: Terraform Apply
         run: |
           cd terraform
-          terraform init -var-file=dev.tfvars
-          terraform plan -var-file=dev.tfvars
+          terraform init -backend-config=dev.conf
+          terraform plan -backend-config=dev.conf
           echo "Deploying Lambda..."
-          terraform apply -var-file=dev.tfvars -auto-approve
+          terraform apply -backend-config=dev.conf -auto-approve
