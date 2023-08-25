@@ -3,6 +3,7 @@ resource "aws_lambda_function" "aws_lambda_resource" {
     role = aws_iam_role.lambda_role.arn
     runtime = "python3.11"
     handler = "lamda_function.handler"
+    image_uri = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.region}.amazonaws.com/${aws_ecr_repository.ecr_repo.name}:ACTUAL"
   }
 
 resource "aws_iam_role" "lambda_role" {
