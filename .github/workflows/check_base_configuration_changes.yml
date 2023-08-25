@@ -1,4 +1,4 @@
-name: Deploy Base Configuration
+name: Check Base Configuration
 on:
   pull_request:
     branches:
