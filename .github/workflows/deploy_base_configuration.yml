@@ -27,7 +27,7 @@ jobs:
       - name: Terraform Apply
         run: |
           cd terraform
-          terraform init -backend-config=dev.conf
-          terraform plan -backend-config=dev.conf
+          terraform init -backend-config=dev-config.consul.tfbackend
+          terraform plan -backend-config=dev-config.consul.tfbackend
           echo "Deploying Lambda..."
-          terraform apply -backend-config=dev.conf -auto-approve
+          terraform apply -backend-config=dev-config.consul.tfbackend -auto-approve
